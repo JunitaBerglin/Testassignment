@@ -3,6 +3,13 @@ import { addTodo } from "../ts/functions";
 import { removeAllTodos } from "../ts/functions";
 import { Todo } from "../ts/models/Todo";
 
+test("should add a todo to list", () => {
+  let todos: Todo[] = [
+    { text: "tvätta", done: true },
+    { text: "dammsuga", done: true },
+  ];
+});
+
 test("should change the todos", () => {
   let newItem = new Todo("learn To test", false);
   changeTodo(newItem);

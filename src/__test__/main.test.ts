@@ -4,7 +4,6 @@
 import { Todo } from "../ts/models/Todo";
 import { IAddResponse } from "../ts/models/IAddResult";
 import * as functions from "./../ts/main";
-import * as easyFunctions from "./../ts/functions";
 
 test("should create new todo", () => {
   let spy = jest.spyOn(functions, "createHtml").mockReturnValue();
@@ -21,17 +20,21 @@ test("should create new todo", () => {
   expect(spy).toHaveBeenCalled();
 });
 
-test("should send error message", () => {
+test("should send error when input value is to short", () => {
+  //arrange
   let spy = jest.spyOn(functions, "displayError").mockReturnValue();
 
-  document.body.innerHTML = `<div id="error"></div>`;
+  document.body.innerHTML = `<input type="text" id="newTodoText" value="cl"/>`;
+
+  //act
   let errorAnswer = (
-    document.getElementById("error") as HTMLInputElement
+    document.getElementById("newTodoText") as HTMLInputElement
   ).value;
   functions.init();
   let listItem: Todo[] = [];
 
   functions.createNewTodo(errorAnswer, listItem);
 
+  //assert
   expect(spy).toHaveBeenCalled();
 });
