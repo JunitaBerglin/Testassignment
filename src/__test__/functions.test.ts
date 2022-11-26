@@ -22,8 +22,6 @@ test("should change the todos", () => {
   expect(newItem.done).toBe(true);
 });
 
-//  todos.splice(0, todos.length);
-
 test("should remove all todos", () => {
   let todos: Todo[] = [
     { text: "tvätta", done: true },
@@ -33,3 +31,4 @@ test("should remove all todos", () => {
 
   expect(todos.length).toBe(0);
 });
+//  toggleToDo och clearTodos
